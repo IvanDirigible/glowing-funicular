@@ -51,7 +51,7 @@ This application is not deployed in the typical manner. Instead, the folder will
 
 The following link demonstrates the application generating a README file:
 
-* Screencastify: 
+* Screencastify: https://watch.screencastify.com/v/fQ5LQHUlN7z7SYBtmJ42
 
 ## License
 This project is licensed under the MIT license.  
