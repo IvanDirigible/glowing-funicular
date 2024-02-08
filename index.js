@@ -100,16 +100,16 @@ fs.writeFile(fileName, data, err => {
     if (err) {
         throw err
     };
-    console.log('README created!')
+    console.log('Your README file has been successfully generated!')
 })
 };
 
 // TODO: Create a function to initialize app
 function init() {
     inquirer.prompt(questions)
-        .then(res => {
-            console.log(res);
-            writeToFile('README-Example.md', generateMarkdown) 
+        .then(data => {
+            console.log(data);
+            writeToFile('README-Example.md', generateMarkdown(data)) 
         })
 };
 
