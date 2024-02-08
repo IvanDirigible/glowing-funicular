@@ -12,23 +12,28 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'motivation',
-        message: 'What was your motivation?',
+        name: 'username',
+        message: 'What is your GitHub username?',
+    },
+    {
+        type: 'input',
+        name: 'repoName',
+        message: 'What is the exact name of your repository you are making this README for?'
     },
     {
         type: 'input',
         name: 'reason',
-        message: 'Why did you build this project? (Not including it being homework.)',
+        message: 'Explain why you built this project. What was your motivation?',
     },
     {
         type: 'input',
         name: 'solution',
-        message: 'What problem did you solve with this project?',
+        message: 'Explain what problem you solved with this project.',
     },
     {
         type: 'input',
         name: 'learning',
-        message: 'What did you learn while building this project?',
+        message: 'Explain what you learned while building this project, and how you grew as a software developer.',
     },
     {
         type: 'input',
@@ -49,7 +54,13 @@ const questions = [
         type: 'list',
         name: 'license',
         message: 'What licensing did you use for project?',
-        choices: ['MIT', 'Apache 2.0', 'GNU v3', 'Mozilla 2.0', 'BSD 3-Clause', 'No license']
+        choices: ['MIT',
+        {value: 'Apache-2.0', name: 'Apache 2.0'},
+        {value: 'GPL-3.0', name: 'GNU v3'},
+        {value: 'MPL-2.0', name: 'Mozilla 2.0'},
+        {value: 'BSD-3-Clause', name: 'BSD 3-Clause'},
+        'No license',
+        ]
     },
     {
         type: 'confirm',

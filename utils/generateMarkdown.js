@@ -34,12 +34,28 @@ function renderFeatures(data) {
   return ''
 };
 
-// TODO: Create a function to generate markdown for README
+function renderContribute(data) {
+  if (`${data.contributeConfirm}` === 'true') {
+    console.log("This is getting a true contribute boolean.")
+    return `## How to Contribute\n${data.contribute}`
+  } else
+  console.log("This is getting a false contribute boolean.")
+  return ''
+};
+
+function renderTesting(data) {
+  if (`${data.testingConfirm}` === 'true') {
+    console.log("This is getting a true testing boolean.")
+    return `## Tests\n${data.testing}`
+  } else
+  console.log("This is getting a false testing boolean.")
+  return ''
+};
+
 function generateMarkdown(data) {
   return `# ${data.title}
 
   ## Description
-  * ${data.motivation}
   * ${data.reason}
   * ${data.solution}
   * ${data.learning}
@@ -56,6 +72,9 @@ function generateMarkdown(data) {
   ## Usage
   ${data.usage}
 
+  ## Repository Link
+  * GitHub: https://${data.username}.github.io/${data.repoName}/
+
   ## Credits
   ${data.credits}
 
@@ -63,11 +82,9 @@ function generateMarkdown(data) {
 
   ${renderFeatures(data)}
 
-  ## How to Contribute
-  ${data.contribute}
+  ${renderContribute(data)}
 
-  ## Tests
-  ${data.testing}
+  ${renderTesting(data)}
 `;
 }
 
