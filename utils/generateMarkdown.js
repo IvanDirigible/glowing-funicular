@@ -25,12 +25,14 @@ function renderLicenseSection(license) {
   return `## License\nThis project is licensed under the ${license} license.\nLicense Link\n${renderLicenseLink(license)}\n${renderLicenseBadge(license)}`
 };
 
-// function renderFeatures(data) {
-//   if (data.featuresConfirm === 'false') {
-//     return ''
-//   } else
-//   return `## Features\n${data.features}`
-// };
+function renderFeatures(data) {
+  if (`${data.featuresConfirm}` === 'true') {
+    console.log("This is getting a true features boolean.")
+    return `## Features\n${data.features}`
+  } else
+  console.log("This is getting a false features boolean.")
+  return ''
+};
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
@@ -43,10 +45,10 @@ function generateMarkdown(data) {
   * ${data.learning}
    
   ## Table of Contents
-  [Installation](#installation)
-  \n[Usage](#usage)
-  \n[Credits](#credits)
-  \n[License](#license)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Credits](#credits)
+  - [License](#license)
 
   ## Installation
   ${data.installation}
@@ -59,8 +61,7 @@ function generateMarkdown(data) {
 
   ${renderLicenseSection(data.license)}
 
-  ## Features
-  ${data.features}
+  ${renderFeatures(data)}
 
   ## How to Contribute
   ${data.contribute}

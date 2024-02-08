@@ -60,7 +60,7 @@ const questions = [
         type: 'input',
         name: 'features',
         message: 'List the features of your project here.',
-        when: (answers) => answers.featuresConfirm === 'true',
+        when: (answers) => answers.featuresConfirm,
     },
     {
         type: 'confirm',
@@ -71,7 +71,7 @@ const questions = [
         type: 'input',
         name: 'contribute',
         message: 'Describe how others developers can contribute to your project.',
-        when: (answers) => answers.contributeConfirm === 'true',
+        when: (answers) => answers.contributeConfirm,
     },
     {
         type: 'confirm',
@@ -82,7 +82,7 @@ const questions = [
         type: 'input',
         name: 'testing',
         message: 'How do you run tests for your project?',
-        when: (answers) => answers.testingConfirm === 'true',
+        when: (answers) => answers.testingConfirm,
     },
 ];
 
