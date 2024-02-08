@@ -22,8 +22,15 @@ function renderLicenseSection(license) {
   if (license === 'No license') {
     return ''
   } else
-  return `## License\nThis project is licensed under the ${license} license.\nLicense Link `
-}
+  return `## License\nThis project is licensed under the ${license} license.\nLicense Link\n${renderLicenseLink(license)}\n${renderLicenseBadge(license)}`
+};
+
+// function renderFeatures(data) {
+//   if (data.featuresConfirm === 'false') {
+//     return ''
+//   } else
+//   return `## Features\n${data.features}`
+// };
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
@@ -50,8 +57,7 @@ function generateMarkdown(data) {
   ## Credits
   ${data.credits}
 
-  ## License
-  ${data.license}
+  ${renderLicenseSection(data.license)}
 
   ## Features
   ${data.features}

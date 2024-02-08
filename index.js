@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
+const generateMarkdown = require('./utils/generateMarkdown');
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -37,7 +38,7 @@ const questions = [
     {
         type: 'input',
         name: 'usage',
-        message: 'Provide instructions and examples for use. Include screenshots as needed.',
+        message: 'Provide instructions and examples for use.',
     },
     {
         type: 'input',
@@ -51,27 +52,56 @@ const questions = [
         choices: ['MIT', 'Apache 2.0', 'GNU v3', 'Mozilla 2.0', 'BSD 3-Clause', 'No license']
     },
     {
+        type: 'confirm',
+        name: 'featuresConfirm',
+        message: 'Are there additional features you would like to list?',
+    },
+    {
         type: 'input',
         name: 'features',
         message: 'List the features of your project here.',
+        when: (answers) => answers.featuresConfirm === 'true',
+    },
+    {
+        type: 'confirm',
+        name: 'contributeConfirm',
+        message: 'Do you want to let other developers know how they can contribute to your project?',
     },
     {
         type: 'input',
         name: 'contribute',
-        message: 'How can others developers contribute to your project?',
+        message: 'Describe how others developers can contribute to your project.',
+        when: (answers) => answers.contributeConfirm === 'true',
+    },
+    {
+        type: 'confirm',
+        name: 'testingConfirm',
+        message: 'Have you written tests for your project?',
     },
     {
         type: 'input',
         name: 'testing',
         message: 'How do you run tests for your project?',
+        when: (answers) => answers.testingConfirm === 'true',
     },
 ];
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    fs.writeFile(fileName, JSON.stringify(data, null, 4), (err) =>
-    err ? console.error(err) : console.info(`\nData written to ${fileName}`)
-  )
+//     fs.writeFile(fileName, JSON.stringify(data, null, 4), (err) =>
+//     err ? console.error(err) : console.info(`\nData written to ${fileName}`)
+//   )
+
+// fs.writeFileSync(fileName, JSON.stringify(data.data));
+// console.log("File written successfully\n");
+// console.log("The written has the following contents:");
+// console.log(fs.readFileSync(fileName, "utf8"));
+fs.writeFile(fileName, data, err => {
+    if (err) {
+        throw err
+    };
+    console.log('README created!')
+})
 };
 
 // TODO: Create a function to initialize app
@@ -79,7 +109,7 @@ function init() {
     inquirer.prompt(questions)
         .then(res => {
             console.log(res);
-            writeToFile('README.md', data) 
+            writeToFile('README-Example.md', generateMarkdown) 
         })
 };
 
